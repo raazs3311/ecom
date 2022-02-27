@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <title>Electronics Accessories</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;1,600&family=IBM+Plex+Serif:wght@300;400;600&display=swap');
+     
+        *{
+          margin: 0px;
+          padding: 0px;
+          box-sizing: border-box;
+        }
+
+     body{
+        font-family: 'Gelasio', serif;
+        font-family: 'IBM Plex Serif', serif;
+     }
+
+     .navbaar{
+         background-color: #FFAEBC;
+     }
+
+     .navbaar .logo{
+        color: #000;
+         font-weight: bold;
+     }
+
+     .navbaar ul li a{
+         color: #000;
+         font-weight: bold;
+     }
+    
+     .bx-chevron-left,  .bx-chevron-right{
+         color: #000;
+     }
+     
+     .parallax {
+         /* The image used */
+          background-image: url("https://subcontracteu.com/uploads/pages/535eee07e8fd4c9fabc377cd464c1d74.png");
+
+          /* Set a specific height */
+            min-height: 500px; 
+
+          /* Create the parallax scrolling effect */
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+}
+
+.foot{
+  background: #FFAEBC;
+}
+
+.container h2::before{
+  content: "";
+  position: absolute;
+  width: 100px;
+  margin-top: 40px;
+  height: 3px;
+  background: #FFAEBC;
+}
+    
+
+    </style>
+</head>
+<body>
+  
+         <!-- header -->
+   
+                <nav class="navbar navbar-expand justify-content-around navbaar">
+                    <!-- Brand/logo -->
+                    <!-- <h1 class="navbar-brand logo py-2">Accessories</h1> -->
+                       <h1 class="navbar-brand logo py-2">RP Group</h1>
+                    
+                     <!-- search button -->
+                    <form  method = "get" class="form-inline" action="/search">
+                        <input class="form-control mr-2" type="text" placeholder="Search" name="query">
+                        <button class="btn btn-dark" type="submit">Search</button>
+                      </form>
+
+                    <!-- Links -->
+                    <ul class="nav navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/category">Category</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/product">Products</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                      </li>
+                    </ul>
+
+                    <i class="fas fa-cart-plus"></i>
+                 </nav>
+          
+              
+        
+
+    <!-- category   -->
+    <div class="parallax">
+
+      {% block body %}
+
+      {% endblock %}
+      
+    </div>
+
+     <!-- footer -->
+
+  <footer class=" text-white foot">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase  text-dark">Accessories & Electronics Product</h5>
+
+          <p class=" text-dark mt-3">
+            Electronics is an international, peer-reviewed, open access journal on the science of 
+            electronics and its applications published semimonthly online . The Polish Society of Applied Electromagnetics
+             is affiliated with Electronics and their members receive a discount on article processing charges.
+          </p>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase text-dark">Categories</h5>
+
+          <ul class="list-unstyled mb-0 mt-3">
+            <li>
+              <a href="#!" class="text-dark">Data cable</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">Headphones</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">Airbuds</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">PowerBank</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">charger</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">MemmoryCard</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">SmartWatch</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase text-dark mb-0">Contact-Us</h5>
+
+          <ul class="list-unstyled d-flex mt-4">
+            <li>
+              <!-- <a href="#!" class="text-white"><i class="fab fa-facebook-f"></i></a> -->
+              <a class="btn btn-outline-light btn-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li>
+              <!-- <a href="#!" class="text-white">Link 2</a> -->
+              <a class="btn btn-outline-light  btn-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+              <!-- <a href="#!" class="text-white">Link 3</a> -->
+              <a class="btn btn-outline-light btn-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+            </li>
+            <li>
+              <!-- <a href="#!" class="text-white">Link 4</a> -->
+              <a class="btn btn-outline-light  btn-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2022 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/">Riturajcommunication.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+</body>
+</html>

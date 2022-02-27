@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>checkout</title>
+    <style>
+
+     .borderless td{
+        border: none;
+     }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container bg-info">
+           <h1 class="p-4 text-center">CHECKOUT</h1>
+            
+        <div class="row d-flex justify-content-center">
+             <div class="col-4 pl-2">
+                
+                <div class="card bg-secondary mt-4 w-75 h-75 ml-5">
+                    <div class="card-body text-center mt-3">
+                      <p class="card-title" style="font-size: 20px; color: #ffff; font-weight: bold;">{{buy.name}}</p>
+                      <!-- <p class="card-text" style="font-size: 15px; color: #ffff; font-weight: bold;">{{buy.price}}</p> -->
+                    </div>
+                </div>
+                
+             </div>
+             <div class="col-4">
+               
+                <div class="card h-75 w-75 mt-4 ">
+                    <img class="card-img-top" width="100%" height="100%" src="/{{buy.proimg}}" alt="Card image">
+                </div>
+                  
+            </div>
+        </div> 
+
+        
+        <div class="row d-flex justify-content-center">
+          
+              <div class="col-6 mt-4 mb-3">
+                <table class="table table-hover borderless">
+                    <tbody>
+                      <tr>
+                        <td class="box">Your Order Price</td>
+                        <td class="text-center">{{buy.price}}</td>
+                      </tr>
+                      <tr>
+                        <td>Shipping Charge</td>
+                        <td class="text-center"></td>
+                      </tr>
+
+                      <tr>
+                        <td>Convience Fee</td>
+                        <td class="text-center"></td>
+                      </tr>
+
+                      <tr>
+                        <th>Total Pay</th>
+                        <th class="text-center">{{buy.price}}</th>
+                      </tr>
+                      <tr>
+                        <th>Delivery Address</th>
+                        <th class="text-center">Estimated</th>
+                      </tr>
+                      
+                      <tr>
+                        <form method="post" > 
+                            {% csrf_token %}
+                              <td><input type="hidden" name="pro_id" value="{{buy.id}}"></td>
+                              <td><input type="email" name="email" placeholder="Email"></td>
+                              <td><button type="submit" class="btn btn-dark">Pay Now</button></td>
+
+                        </form>
+                      </tr>
+                        <td>  <button type="button" class="btn btn-dark mt-2">Cancel</button></td>
+                        <td class="text-center">  <button type="button"  class="btn btn-dark mt-2">Proceed to pay</button></td>
+                      </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+       </div>
+ </div>
+ </div>
+    
+</body>
+</html>
