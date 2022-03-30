@@ -16,8 +16,11 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+
+import accounts
 admin.site.site_header = 'Ecom admin'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('acces.urls')),
+    path('accounts/',include('accounts.urls')),
 ]

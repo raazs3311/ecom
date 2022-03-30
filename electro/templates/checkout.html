@@ -18,87 +18,186 @@
     <title>checkout</title>
     <style>
 
-     .borderless td{
-        border: none;
-     }
+.bg {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    background-color: #cccccc;
+    background-size: 100% 100%;
+    background-position: top center;
+    margin: auto
+}
+
+.mainRow {
+    margin-left: 10%;
+    margin-right: 10%
+}
+
+p {
+    margin: 0px
+}
+
+.desc {
+    background-color: #f0edeb;
+    margin-top: 5%;
+    margin-left: 0;
+    margin-right: 50px;
+    margin-bottom: 4%
+}
+
+.card-body {
+    padding: 0;
+    margin: 0;
+    margin-top: 10%
+}
+
+div.card.main {
+    margin: 0px !important
+}
+
+.card {
+    padding: 0 !important;
+    margin-top: 40px
+}
+
+.quantity,
+.shipping,
+.promocode,
+.subtotal,
+.cardAndExpire,
+.nameAndcvc {
+    margin: 5%;
+    color: #6c757d !important
+}
+
+.heading1 {
+    margin: 5%;
+    font-size: 25px
+}
+
+.heading2 {
+    margin: 5%;
+    margin-top: 15%;
+    font-size: 20px
+}
+
+.payment {
+    background-color: #f0edeb;
+    padding: 3px;
+    margin-top: 15%
+}
+
+.text1 {
+    color: black;
+    font-weight: 700
+}
+
+.card-footer {
+    background-color: black;
+    color: white
+}
+
+.purchaseLink {
+    text-decoration: none
+}
+
+.row1 {
+    font-size: 12px
+}
+
+.row2 {
+    font-weight: 600
+}
+
+.subRow {
+    margin-left: 10%;
+    margin-bottom: 2%;
+    margin-top: 5%
+}
+
+p.cardAndExpireValue,
+p.nameAndcvcValue {
+    margin: 5%;
+    margin-bottom: 10%;
+    font-weight: 600
+}
+
+p.nameAndcvc,
+p.cardAndExpire {
+    margin-bottom: -10px
+}
+
+.total {
+    margin: 5%
+}
+
+.totalText {
+    font-weight: 700
+}
+
+.totalText2 {
+    font-weight: 700;
+    font-size: 30px
+}
+
+.card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+    height: 430px
+}
 
 
     </style>
 </head>
 <body>
 
-    <div class="container bg-info">
-           <h1 class="p-4 text-center">CHECKOUT</h1>
-            
-        <div class="row d-flex justify-content-center">
-             <div class="col-4 pl-2">
-                
-                <div class="card bg-secondary mt-4 w-75 h-75 ml-5">
-                    <div class="card-body text-center mt-3">
-                      <p class="card-title" style="font-size: 20px; color: #ffff; font-weight: bold;">{{buy.name}}</p>
-                      <!-- <p class="card-text" style="font-size: 15px; color: #ffff; font-weight: bold;">{{buy.price}}</p> -->
+  <div class="bg">
+    <!--For Row containing all card-->
+    <div class="row mainRow">
+        <!--Card 1-->
+        <div class="col-sm-8">
+            <div class="card card-cascade wider shadow p-3 mb-5 ">
+                <!--Card image-->
+                <div class="view view-cascade overlay text-center"> <img class="card-img-top" src="/{{buy.proimg}}" alt=""> <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a> </div>
+                <!--Product Description-->
+                <div class="desc">
+                    <!-- 1st Row for title-->
+                   
+                </div>
+            </div>
+        </div>
+        <!--Card 2-->
+        <div class="col-sm-4">
+            <div class="card card-cascade card-ecommerce wider shadow p-3 mb-5 ">
+                <!--Card Body-->
+                <div class="card-body card-body-cascade">
+                    <!--Card Description-->
+                    <div class="card2decs">
+                        <p class="heading1"><strong>{{buy.name}}</strong></p>
+                        <p class="quantity">Qty <span class="float-right text1">1</span></p>
+                        <p class="subtotal">Subtotal<span class="float-right text1">{{buy.price}}</span></p>
+                        <p class="shipping">Shipping<span class="float-right text1">Free</span></p>
+                        <p class="promocode">Promo Code<span class="float-right text1">not available</span></p>
+                        <p class="total"><strong>Total</strong><span class="float-right totalText1"><span class="totalText2">{{buy.price}}</span></span></p>
                     </div>
+                    <div class="payment">
+                        <p class="heading2"><strong>Payment Details</strong></p>
+                        <p class="cardAndExpire">Card Number<span class="float-right">Expiry</span></p>
+                        <p class="cardAndExpireValue">161617161816188<span class="float-right">26/11</span></p>
+                        <p class="nameAndcvc" style="margin-bottom:-10px;">Cardholder name<span class="float-right">CVC</span></p>
+                        <p class="nameAndcvcValue">Mr. Your name<span class="float-right">010</span></p>
+                    </div>
+                    <!--Card footer--> <a href="" class="purchaseLink">
+                        <div class="card-footer text-center"> PURCHASE &#8594; </div>
+                    </a>
                 </div>
-                
-             </div>
-             <div class="col-4">
-               
-                <div class="card h-75 w-75 mt-4 ">
-                    <img class="card-img-top" width="100%" height="100%" src="/{{buy.proimg}}" alt="Card image">
-                </div>
-                  
             </div>
-        </div> 
-
-        
-        <div class="row d-flex justify-content-center">
-          
-              <div class="col-6 mt-4 mb-3">
-                <table class="table table-hover borderless">
-                    <tbody>
-                      <tr>
-                        <td class="box">Your Order Price</td>
-                        <td class="text-center">{{buy.price}}</td>
-                      </tr>
-                      <tr>
-                        <td>Shipping Charge</td>
-                        <td class="text-center"></td>
-                      </tr>
-
-                      <tr>
-                        <td>Convience Fee</td>
-                        <td class="text-center"></td>
-                      </tr>
-
-                      <tr>
-                        <th>Total Pay</th>
-                        <th class="text-center">{{buy.price}}</th>
-                      </tr>
-                      <tr>
-                        <th>Delivery Address</th>
-                        <th class="text-center">Estimated</th>
-                      </tr>
-                      
-                      <tr>
-                        <form method="post" > 
-                            {% csrf_token %}
-                              <td><input type="hidden" name="pro_id" value="{{buy.id}}"></td>
-                              <td><input type="email" name="email" placeholder="Email"></td>
-                              <td><button type="submit" class="btn btn-dark">Pay Now</button></td>
-
-                        </form>
-                      </tr>
-                        <td>  <button type="button" class="btn btn-dark mt-2">Cancel</button></td>
-                        <td class="text-center">  <button type="button"  class="btn btn-dark mt-2">Proceed to pay</button></td>
-                      </tr>
-                    </tbody>
-                </table>
-
-
-            </div>
-       </div>
- </div>
- </div>
+        </div>
+    </div>
+</div>
     
 </body>
 </html>

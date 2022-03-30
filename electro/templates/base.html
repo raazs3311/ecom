@@ -6,15 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <title>Electronics Accessories</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Electronic Accessories</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;1,600&family=IBM+Plex+Serif:wght@300;400;600&display=swap');
      
@@ -31,11 +30,7 @@
 
      .navbaar{
          background-color: #FFAEBC;
-     }
-
-     .navbaar .logo{
-        color: #000;
-         font-weight: bold;
+         
      }
 
      .navbaar ul li a{
@@ -49,7 +44,10 @@
      
      .parallax {
          /* The image used */
-          background-image: url("https://subcontracteu.com/uploads/pages/535eee07e8fd4c9fabc377cd464c1d74.png");
+          /* background-image: url("static/img/bg3.jpg"); */
+          background-color: #223a66;
+          
+          
 
           /* Set a specific height */
             min-height: 500px; 
@@ -74,25 +72,34 @@
   background: #FFAEBC;
 }
 .logo img{
-  width: 50px;
-  height: 30px;
-
+  width: 90px;
+  height: 40px;
 }
-    
+   
 
     </style>
 </head>
 <body>
   
          <!-- header -->
+         {% if messages %}
+         {% for message in messages %}
+         
+         <div class="alert alert-{{message.tags}} alert-dismissible">
+           <button type="button" class="close" data-dismiss="alert">&times;</button>
+           <strong>Welcome!Loged in Successfully</strong>
+         </div>
+         {% endfor %}
+         {% endif %} 
    
-                <nav class="navbar navbar-expand justify-content-around navbaar">
+                <nav class="navbar navbar-expand justify-content-around sticky-top navbaar">
                     <!-- Brand/logo -->
+                    <h1 class="navbar-brand logo"><img src="static/logo.png"></h1>
                     <!-- <h1 class="navbar-brand logo py-2">Accessories</h1> -->
-                       <h1 class="navbar-brand logo"><img src="static/logo.png"></h1>
+                      
                     
                      <!-- search button -->
-                    <form  method = "get" class="form-inline" action="/search">
+                    <form class="form-inline"  action="/search" method = "get">
                         <input class="form-control mr-2" type="text" placeholder="Search" name="query">
                         <button class="btn btn-dark" type="submit">Search</button>
                       </form>
@@ -112,23 +119,117 @@
                         <a class="nav-link" href="/contact">Contact</a>
                       </li>
                     </ul>
+                                          
+                      {% if user.is_authenticated %}
+                      Hi {{ user.username }}!
+                      <a href="/logout">logout</a>
+                      {% else %}
+                      <a href="{% url 'acces:login' %}">Log In</a>
+                      {% endif %}
+                     
+                    <!-- shopping cart
 
-                    <i class="fas fa-cart-plus"></i>
+                    <i class="fa fa-cart-plus" style="font-size: 22px;"></i> -->
+    
+                    <!-- sign up  button start-->
+                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+                      Sign Up
+                    </button>
+                   
+                    <!-- sign up model -->
+                    <div class="modal fade" id="myModal">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          </div>
+
+                          <div class="container p-5">
+                            <div class="row">
+                              <div class="col">
+                               
+                            <form  method="post" action = "/Sign">
+
+                              {% csrf_token %}
+                                <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <div class="row mb-4">
+                              <div class="col">
+                                <div class="form-outline">
+                                  <input type="text" id="form3Example1" name="username"  class="form-control" />
+                                  <label class="form-label" for="form3Example1">Username</label>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-outline">
+                                  <input type="text" id="form3Example2" name = 'Full_Name' class="form-control" />
+                                  <label class="form-label" for="form3Example2">Full Name</label>
+                                </div>
+                              </div>
+                            </div>
+                          
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                              <input type="email" id="form3Example3" name = 'Email' class="form-control" />
+                              <label class="form-label" for="form3Example3">Email address</label>
+                            </div>
+                          
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                              <input type="password" id="form3Example4" name = 'Password' class="form-control" />
+                              <label class="form-label" for="form3Example4">Password</label>
+                            </div>
+                          
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-dark btn-block mb-4">Sign up</button>
+                          
+                            <!-- Register buttons -->
+                            <div class="text-center">
+                              <p>or sign up with:</p>
+                              <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-facebook-f"></i>
+                              </button>
+                          
+                              <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-google"></i>
+                              </button>
+                          
+                              <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-twitter"></i>
+                              </button>
+                          
+                              <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-github"></i>
+                              </button>
+                            </div>
+
+                           </form>
+
+                          </div>
+                        </div>
+                       </div>
+                     </div>
+                   </div>  
+                </div>
+               <!-- sign up button end-->
+
                  </nav>
+
+               
+             
+                
           
-              
-        
-
-    <!-- category   -->
-    <div class="parallax">
-
-      {% block body %}
-
-      {% endblock %}
       
+    <!-- parallax   -->
+    <div class="parallax">
+     {% block body %}
+
+     {% endblock %}
+
     </div>
 
-     <!-- footer -->
+
+  <!-- footer -->
 
   <footer class=" text-white foot">
     <!-- Grid container -->
@@ -184,15 +285,15 @@
           <ul class="list-unstyled d-flex mt-4">
             <li>
               <!-- <a href="#!" class="text-white"><i class="fab fa-facebook-f"></i></a> -->
-              <a class="btn btn-outline-light btn-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-outline-light btn-dark btn-floating m-1" href="https://www.facebook.com/rituraj.sharma.716533" role="button"><i class="fab fa-facebook-f"></i></a>
             </li>
             <li>
               <!-- <a href="#!" class="text-white">Link 2</a> -->
-              <a class="btn btn-outline-light  btn-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+              <a class="btn btn-outline-light  btn-dark btn-floating m-1" href="https://twitter.com/Rituraj0806887?t=XUS_9zQiOL6TJEeeeD0JRg&s=08" role="button"><i class="fab fa-twitter"></i></a>
             </li>
             <li>
               <!-- <a href="#!" class="text-white">Link 3</a> -->
-              <a class="btn btn-outline-light btn-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+              <a class="btn btn-outline-light btn-dark btn-floating m-1" href="https://instagram.com/er_raaz_sharma" role="button"><i class="fab fa-instagram"></i></a>
             </li>
             <li>
               <!-- <a href="#!" class="text-white">Link 4</a> -->
@@ -214,5 +315,7 @@
     <!-- Copyright -->
   </footer>
   <!-- Footer -->
+
+
 </body>
 </html>
